@@ -1,0 +1,117 @@
+#include <iostream>
+#define UNDEFINED 0
+#define LINE 1
+#define RECTANGLE 2
+#define CUBOID 3
+
+using namespace std;
+
+class Shape
+{
+    int type;
+
+public:
+    Shape(int type)
+    {
+        this->type = type;
+    }
+    virtual int area()
+    {
+        return -1;
+    }
+    virtual int volume()
+    {
+        return -1;
+    }
+    int get_type()
+    {
+        return type;
+    }
+    void set_type(int type)
+    {
+        this->type = type;
+    }
+};
+
+class Line : public Shape
+{
+
+    int length;
+
+public:
+    Line(int type, int length) : Shape(type)
+    {
+        this->length = length;
+    }
+    // your code
+    int area() { return 0; }
+    int volume() { return 0; }
+    int getLength() { return length; }
+};
+
+class Rectangle : public Line
+{
+    int width;
+
+public:
+    Rectangle(int type, int length, int width) : Line(type, length)
+    {
+        this->width = width;
+    }
+    // your code
+    int area() { return getLength() * width; }
+    int volume() { return 0; }
+    int getWidth() { return width; }
+};
+
+class Cuboid : public Rectangle
+{
+    int height;
+
+public:
+    Cuboid(int type, int length, int width, int height) : Rectangle(type, length, width)
+    {
+        this->height = height;
+    }
+    // your code
+    int area() { return (2 * (getLength() * height + Rectangle::area() + height * getWidth())); }
+    int volume() { return Rectangle::area() * height; }
+};
+
+int main()
+{
+    Shape s(UNDEFINED);
+    cout << s.area() << endl;
+    cout << s.volume() << endl;
+
+    Line l(LINE, 5);
+    cout << l.area() << endl;   // 0
+    cout << l.volume() << endl; // 0
+
+    Rectangle r(RECTANGLE, 5, 2);
+    cout << r.area() << endl;   // 10
+    cout << r.volume() << endl; // 0
+
+    Cuboid c(CUBOID, 5, 2, 4);
+    cout << c.area() << endl;   // 76
+    cout << c.volume() << endl; // 40
+
+    Shape *s1;
+    s1 = &l;
+    cout << s1->area() << endl;   // 0
+    cout << s1->volume() << endl; // 0
+
+    Shape *s2;
+    s2 = &r;
+    cout << s2->area() << endl;   // 10
+    cout << s2->volume() << endl; // 0
+
+    Shape *s3;
+    s3 = &c;
+    cout << s3->area() << endl;   // 76
+    cout << s3->volume() << endl; // 40
+
+    // write destructor function and observe (by printing something) the order of constructor and destructor call
+
+    return 0;
+}
