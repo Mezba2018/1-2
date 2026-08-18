@@ -1,0 +1,8 @@
+1,KFC,4.3,$$$,98531,Chicken,Fast Food,Family Meals
+2,IHOP,4.3,$$,77494,Breakfast and Brunch,Family Meals,Burgers
+3,Starbucks,4.9,$,99218,Coffee and Tea,Breakfast and Brunch,Bakery
+5,chillox,4.5,$$$,84645,burger,chicken,fish
+7,kfc2,3.6,$$$,356367,fish,meat,chicken
+7,mezba,5.4,$$,490783,wife,gf,
+8,junaid,4.0,$,111111111,love,
+9,pizza burg,4.5,$$$,23874,pizza,pasta,
